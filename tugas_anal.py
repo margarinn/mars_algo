@@ -14,16 +14,17 @@ class HashTable3:
     ## retrieve item. confirming if the value is present in the hashtable.
     def __getitem__(self, key):
         h = self.get_hash(key) ## creates var h that is the hash value of key. 
-        if self.arr[h] is None: ## if there's no matching hash in the hashtable, abort the ops.
+        if self.arr[h] is None: ## if the hash index is empty, abort mission.
             return
 
-        prob_range = self.get_prob_range(h)
+        prob_range = self.get_prob_range(h) ## searched for the range of possible hash location.
 
+        ## searched for all of the possible location.
         for prob_index in prob_range:
-            element = self.arr[prob_index]
-            if element is None:
+            element = self.arr[prob_index] ## creates an element var that stores the value of array with the index of prob_index
+            if element is None: ## if there's no valu in the array. abort ops.
                 return
-            if element[0] == key:
+            if element[0] == key: ## if there's a hash match "element[0]". return the value "element[1]"
                 return element[1]
 
     def __setitem__(self, key, val):
