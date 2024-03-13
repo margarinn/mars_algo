@@ -41,15 +41,17 @@ class HashTable3:
     def get_prob_range(self, index):
         return [*range(index, len(self.arr))] + [*range(0, index)] ## basically do "create a list in the range of index to the end of the array" + "a list from 0 to the current position of the array"
 
+    ## find a slot for the hashmap to stay.
     def find_slot(self, key, index):
-        prob_range = self.get_prob_range(index)
-        for prob_index in prob_range:
-            if self.arr[prob_index] is None:
+        prob_range = self.get_prob_range(index) ## create a list that host var of all the possible hash position.
+
+        for prob_index in prob_range:  ## loops thru the possibe position
+            if self.arr[prob_index] is None: ## if the inde is empty, return it to the caller.
                 return prob_index
-            if self.arr[prob_index][0] == key:
+            if self.arr[prob_index][0] == key: ## like this. array is hash:item. if the item match the key, return it.
                 return prob_index
 
-        raise Exception("Hashmap full")
+        raise Exception("Hashmap full") ## gives an error messages if there is no avail spot.
 
     def __delitem__(self, key):
         h = self.get_hash(key)
