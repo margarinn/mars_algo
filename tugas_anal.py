@@ -27,14 +27,15 @@ class HashTable3:
             if element[0] == key: ## if there's a hash match "element[0]". return the value "element[1]"
                 return element[1]
 
+    ## input data into hash table
     def __setitem__(self, key, val):
-        h = self.get_hash(key)
-        if self.arr[h] is None:
+        h = self.get_hash(key) ## !repeated ## creates a var that stores the hash of the input.
+        if self.arr[h] is None: ## if the index of the hash is empty, input key and val into the array. as a dictionary.
             self.arr[h] = (key, val)
         else:
-            new_h = self.find_slot(key, h)
-            self.arr[new_h] = (key, val)
-        print(self.arr)
+            new_h = self.find_slot(key, h) ## find a new place to store the item into hash.
+            self.arr[new_h] = (key, val)  ## input the item into hash. 
+        print(self.arr)                     ## print the array. just checking if it works flawlessly prolly.
 
     def get_prob_range(self, index):
         return [*range(index, len(self.arr))] + [*range(0, index)]
