@@ -53,15 +53,17 @@ class HashTable3:
 
         raise Exception("Hashmap full") ## gives an error messages if there is no avail spot.
 
+    ## delete item. what else?
     def __delitem__(self, key):
-        h = self.get_hash(key)
-        prob_range = self.get_prob_range(h)
+        h = self.get_hash(key) ## same as above. honestly it's pretty tiring to write the same thing over an-- set a var to host the hash.
+        prob_range = self.get_prob_range(h) ## get the range of the hash.
+
         for prob_index in prob_range:
-            if self.arr[prob_index] is None:
+            if self.arr[prob_index] is None: ## if the hash is empty, abort. 
                 return 
-            if self.arr[prob_index][0] == key:
+            if self.arr[prob_index][0] == key: ## if there's a value inside it, set it to None. basically deleting it.
                 self.arr[prob_index] = None
-        print(self.arr)
+        print(self.arr) ## printing the array js to make sure.
 
 
 
