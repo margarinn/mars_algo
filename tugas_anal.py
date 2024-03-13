@@ -37,8 +37,9 @@ class HashTable3:
             self.arr[new_h] = (key, val)  ## input the item into hash. 
         print(self.arr)                     ## print the array. just checking if it works flawlessly prolly.
 
+    ## looks for a suitable space for your hash to settel by.
     def get_prob_range(self, index):
-        return [*range(index, len(self.arr))] + [*range(0, index)]
+        return [*range(index, len(self.arr))] + [*range(0, index)] ## basically do "create a list in the range of index to the end of the array" + "a list from 0 to the current position of the array"
 
     def find_slot(self, key, index):
         prob_range = self.get_prob_range(index)
